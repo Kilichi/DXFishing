@@ -102,8 +102,8 @@ export function CatchesView({
       )}
 
       {refreshing ? (
-        <div className="flex flex-col gap-4">
-          {Array.from({ length: 3 }).map((_, i) => (
+        <div className="grid gap-4 md:grid-cols-2">
+          {Array.from({ length: 4 }).map((_, i) => (
             <Skeleton key={i} className="h-72 w-full" />
           ))}
         </div>
@@ -119,11 +119,13 @@ export function CatchesView({
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-4">
-          {items.map((item) => (
-            <CatchCard key={item.id} item={item} />
-          ))}
-          {loadingMore && <Skeleton className="h-72 w-full" />}
+        <div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {items.map((item) => (
+              <CatchCard key={item.id} item={item} />
+            ))}
+            {loadingMore && <Skeleton className="h-72 w-full" />}
+          </div>
           <div ref={sentinel} className="h-1" />
         </div>
       )}
@@ -132,7 +134,7 @@ export function CatchesView({
         type="button"
         onClick={() => setDialogOpen(true)}
         aria-label="Nueva captura"
-        className="fixed bottom-24 right-5 z-40 grid size-14 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-float transition-transform active:scale-95"
+        className="fixed bottom-24 right-5 z-40 grid size-14 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-float transition-transform active:scale-95 md:bottom-8 md:right-8"
       >
         <Plus className="size-6" />
       </button>

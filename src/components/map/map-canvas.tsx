@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import {
+  LayersControl,
   MapContainer,
   Marker,
   Popup,
@@ -72,10 +73,29 @@ export default function MapCanvas({
       scrollWheelZoom
       className={addMode ? "cursor-crosshair" : ""}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <LayersControl position="topright">
+        <LayersControl.BaseLayer checked name="Relieve">
+          <TileLayer
+            attribution='&copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)'
+            url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+            maxZoom={17}
+          />
+        </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Calles">
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </LayersControl.BaseLayer>
+        <LayersControl.BaseLayer name="Satélite">
+          <TileLayer
+            attribution="&copy; Esri, Maxar, Earthstar Geographics"
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+            maxZoom={19}
+          />
+        </LayersControl.BaseLayer>
+      </LayersControl>
+
       <LocateOnMount />
       <ClickToPick enabled={addMode} onPick={onPick} />
 

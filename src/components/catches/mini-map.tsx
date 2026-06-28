@@ -34,8 +34,9 @@ export default function MiniMap({ value, onChange }: MiniMapProps) {
       className="h-48 w-full cursor-crosshair"
     >
       <TileLayer
-        attribution='&copy; OpenStreetMap'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://opentopomap.org">OpenTopoMap</a>'
+        url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+        maxZoom={17}
       />
       <ClickToSet onChange={onChange} />
       {value && <Marker position={[value.lat, value.lng]} icon={spotIcon} />}

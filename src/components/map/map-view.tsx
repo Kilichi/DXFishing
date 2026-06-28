@@ -62,7 +62,7 @@ export function MapView({ spots }: MapViewProps) {
         </span>
       </div>
 
-      <div className="relative h-[calc(100dvh-11rem)] min-h-[380px] w-full overflow-hidden rounded-2xl border border-border/60 shadow-soft">
+      <div className="relative h-[calc(100dvh-11rem)] min-h-[380px] w-full overflow-hidden rounded-2xl border border-border/60 shadow-soft md:h-[calc(100dvh-8rem)]">
         <MapCanvas
           spots={spots}
           addMode={addMode}
