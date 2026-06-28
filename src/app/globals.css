@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 0 0% 100%; /* white #FFFFFF */
+    --foreground: 222 47% 11%; /* slate-900 #0F172A */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Brand */
+    --primary: 199 89% 48%; /* sky-500 #0EA5E9 */
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 201 96% 32%; /* sky-700 #0369A1 */
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 204 100% 97%; /* sky-50 #F0F9FF */
+    --secondary-foreground: 201 96% 32%;
+
+    --muted: 204 100% 97%;
+    --muted-foreground: 215 16% 47%; /* slate-500 */
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%; /* slate-200 */
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%; /* sky-500 */
+
+    --radius: 1rem; /* rounded-2xl base */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Safe-area aware app shell for installed PWA on iOS */
+    min-height: 100dvh;
+  }
+}
+
+/* Leaflet must render above nothing weird but below our fixed nav.
+   Tiles z-index sits low; our bottom nav uses z-50. */
+.leaflet-container {
+  @apply h-full w-full rounded-2xl;
+  z-index: 0;
+}
+
+/* Quita el fondo/borde blanco que Leaflet da a los divIcon. */
+.dx-marker {
+  background: transparent;
+  border: 0;
+  filter: drop-shadow(0 4px 6px rgb(2 132 199 / 0.35));
+}
+.dx-marker-pending {
+  animation: dx-bounce 0.9s ease-in-out infinite;
+}
+@keyframes dx-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Popups con la identidad sky. */
+.leaflet-popup-content-wrapper {
+  @apply rounded-2xl shadow-float;
+}
+.leaflet-popup-content {
+  @apply m-0 p-0;
+}
+.leaflet-popup-tip {
+  @apply shadow-none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

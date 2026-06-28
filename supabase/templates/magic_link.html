@@ -1,0 +1,18 @@
+<div style="font-family: system-ui, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px; color: #0F172A;">
+  <div style="display: inline-block; background: #0EA5E9; color: #fff; border-radius: 16px; padding: 10px 14px; font-weight: 700;">
+    🎣 DX Fishing
+  </div>
+  <h2 style="margin: 24px 0 8px;">Tu acceso</h2>
+  <p style="color: #475569; line-height: 1.5;">
+    Pulsa el botón para iniciar sesión. El enlace caduca en 1 hora.
+  </p>
+  <a
+    href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=magiclink&next=/"
+    style="display: inline-block; margin-top: 16px; background: #0EA5E9; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 16px; font-weight: 600;"
+  >
+    Iniciar sesión
+  </a>
+  <p style="color: #94A3B8; font-size: 13px; margin-top: 24px;">
+    Si no fuiste tú, ignora este correo.
+  </p>
+</div>
